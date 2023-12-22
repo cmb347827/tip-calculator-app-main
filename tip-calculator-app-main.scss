@@ -160,8 +160,7 @@ body {
 		   body:has(#custom:focus) & span:not(#custom-error){
              @include border-radius(11px);
 			 @include bg-color(map-get($colors,Very dark cyan),nth($fallback-colors,2));
-             @include font-color(map-get($colors,Very light grayish cyan),nth($fallback-colors,6));
-             
+             @include font-color(map-get($colors,Very light grayish cyan),nth($fallback-colors,6)); 
 		   }
 		   
 		   #custom{
@@ -213,7 +212,7 @@ body {
 		 .result{
 		    @include font-color(map-get($colors,Strong cyan),nth($fallback-colors,1));
 			font:{
-			  size:$font_size-24;
+			  size:$font_size-24 * 3;
 			  weight:$font_weight-bold;
 			}
 		 }
@@ -222,7 +221,7 @@ body {
 			display:block;
 			margin: 20px auto;
 			border:none;
-			@include bg-color(map-get($colors,Strong cyan),nth($fallback-colors,1));
+			@include bg-color(map-get($colors,Dark grayish cyan),nth($fallback-colors,3));
 			&:hover{
 			   @include bg-color(map-get($colors,Light grayish cyan),nth($fallback-colors,5));
 			   @include font-color(map-get($colors,Very dark cyan),nth($fallback-colors,2));

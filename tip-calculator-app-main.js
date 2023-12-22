@@ -86,8 +86,7 @@ const calcTip =()=>{
 	let people = Number(vars.people.value);
 	let tipPerPerson='';
 	let tipInCents='';
-	//reset 
-	//test cases
+
     tipInCents= amountInCents * (Number(vars.tip)/100);
 	tipPerPerson = tipInCents /people;
 	tipPerPerson= (tipPerPerson/100);
@@ -97,6 +96,9 @@ const calcTip =()=>{
 	let totalPerPerson = ((amountInCents+ tipInCents)/100/people);
 	//totalPerPerson = totalPerPerson.toFixed(2);
 	vars.totalPerson.textContent=totalPerPerson.toLocaleString('en-US',{style:'currency',currency:'USD',minimumFractionDigits: 2});
+
+    //highlight reset button
+	vars.resetbtn.style.backgroundColor='hsl(172, 67%, 45%)';
 }
 
 const fromStart=(element)=>{
@@ -126,17 +128,7 @@ $(window).on('load',function(){
          }
 		 });
 	 },false);
-	 /*document.querySelector('#custom').addEventListener('blur',function(){
-		 console.log('blur');
-	    [...document.querySelectorAll('.tip')].forEach(function(item) {
-			if(item===document.activeElement){
-				console.log('light colored, make light');
-				item.style.backgroundColor='Cyan';
-			}else{
-				console.log('dark colored,do nothing');
-			}
-		});
-	 });*/
+	 
 	 ["focus","change","keyup"].forEach((event) => {
 		document.querySelector('#custom').addEventListener(event,function(){
 		 if(this.value<'0'){
@@ -145,7 +137,10 @@ $(window).on('load',function(){
 		 //forEach focus event is so when user selects custom for it to be zero again.
 		 //this.focus() Prevents custom tip losing focus when user clicks anywhere outside of custom input field and so the focus wont be back on the pre-selected tips that they have a light color.
 		 this.focus();
-		 
+		 [...document.querySelectorAll('.tip')].forEach(function(item) {
+			 item.blur();
+			 item.checked=false;
+		 });
 		 vars.tip = this.value;
 		 keyUp();
 		   
@@ -194,7 +189,6 @@ $(window).on('load',function(){
             },false);
 	 },false);
 	 (vars.resetbtn).addEventListener('click',function(){
-		 console.log('in reset');
-		 //(vars.tipform).reset();
+		 vars.tipform.reset();
      });
 });
