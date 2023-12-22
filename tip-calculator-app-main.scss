@@ -1,0 +1,255 @@
+
+@import 'custom.scss';
+@import '_globals.scss';
+
+$colors:(
+   Strong cyan: hsl(172, 67%, 45%),
+   Very dark cyan: hsl(183, 100%, 15%),
+   Dark grayish cyan: hsl(186, 14%, 43%),
+   Grayish cyan: hsl(184, 14%, 56%),
+   Light grayish cyan: hsl(185, 41%, 84%),
+   Very light grayish cyan: hsl(189, 41%, 97%),
+   White: hsl(0, 0%, 100%),
+);
+$fallback-colors:(
+   Aquamarine4 DarkSlateGray3 DarkSlateGray4 LightBlue LightCyan3 LightCyan2 White
+);
+
+@mixin background($url,$position:auto,$size:auto,$repeat:no-repeat,$fixed:fixed,$color:white){
+    background: url($url) $position/$size $repeat $fixed $color; 
+}
+@mixin font-color($color, $fallback-color) {
+  color: $fallback-color;
+  color: $color;
+}
+
+@mixin bg-color($color, $fallback-color) {
+  background-color: $fallback-color;
+  background-color: $color;
+}
+
+@mixin width($grid-size) {
+  width: $grid-size * 1px;
+}
+@mixin max-width($grid-size) {
+  max-width: $grid-size * 1px;
+}
+@mixin min-width($grid-size) {
+  min-width: $grid-size * 1px;
+}
+@mixin border-radius($radius...) {
+  border-radius: $radius;
+}
+@mixin margin($args...) {
+  margin: $args;
+}
+@mixin padding($args...) {
+  padding: $args;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  
+  background: url('./images/logo.svg') top center / 9% 9% no-repeat map-get($colors,Light grayish cyan);
+  @media screen and(min-width:$container__form-xxl * 1px){
+     background: url('./images/logo.svg') top center / 12% 12% no-repeat map-get($colors,Light grayish cyan);
+  }
+}
+
+.red{ border:2px solid red;}
+#main {
+    @include width($container__form-xs);
+	@include bg-color(map-get($colors,White),nth($fallback-colors,7));
+	height: 100%;
+	@include margin(100px auto);
+	font:{
+	   size:$font_size-24;
+	   weight:$font_weight-semibold;
+	}
+	
+	.outer{
+	   height: 100%;
+	   & > *{
+	      @include border-radius(20px);
+	   }
+	   
+	   .error{
+	     font:{
+		   size:$font_size-12;
+		 }
+	   }
+	   
+	   &__first{
+	     @include padding(10px);
+	     #amount-error,#people-error{
+	         display:none;
+			 @include bg-color(map-get($colors,White),nth($fallback-colors,7));
+	     }
+		 .label-title{
+	        font:{
+			  size:$font_size-16;
+			  weight:$font_weight-bold;
+	        }
+	     }
+		 .border-left{
+		   border-left:none;
+		 }
+		 .border-right{
+		   border-right:none;
+		 }
+		 #amount,#people{
+		     @include border-radius(8px);
+		     @include bg-color(map-get($colors,Very light grayish cyan),nth($fallback-colors,6));
+		     &:hover{
+			    border:4px solid map-get($colors,Strong cyan);
+			 }
+		 }
+	     #tipamount{
+		   min-height:fit-content;
+		   position:relative;
+		   right:2px;
+		   #custom-error{
+	         display:none;
+			 @include bg-color(map-get($colors,White),nth($fallback-colors,7));
+	       }
+           & input[type="radio"] {
+             display: none;
+           }
+	       & span {
+             display: inline-block;
+			 width: 100px;
+			 height: 35px;
+             text-transform: uppercase;
+             @include border-radius(10px);
+             @include bg-color(map-get($colors,Very dark cyan),nth($fallback-colors,2));
+             @include font-color(map-get($colors,Very light grayish cyan),nth($fallback-colors,6));
+			 @media screen and(min-width:$container__form-xxl * 1px){
+			    width: 90px;
+			    height: 40px;
+			 }
+			 &:hover{
+			    @include bg-color(map-get($colors,Strong cyan),nth($fallback-colors,1));
+				@include font-color(map-get($colors,Very dark cyan),nth($fallback-colors,2));
+			 }
+		   }
+		   //checked +no focus : dark blue
+		   //checked + focus : light grayish
+		   
+		   & input[type="radio"]:checked + span {
+             @include bg-color(map-get($colors,Light grayish cyan),nth($fallback-colors,5));
+             @include font-color(map-get($colors,Very dark cyan),nth($fallback-colors,2));  
+		   }
+		   & input[type="radio"] + span {
+		     &:hover,&:focus{
+			   cursor:pointer;
+			   @include bg-color(map-get($colors,Light grayish cyan),nth($fallback-colors,5));
+               @include font-color(map-get($colors,Very dark cyan),nth($fallback-colors,2));
+			 }
+		   }
+		   //:not(#custom-error) prevents error span to be colored very dark cyan.
+		   body:has(#custom:focus) & span:not(#custom-error){
+             @include border-radius(11px);
+			 @include bg-color(map-get($colors,Very dark cyan),nth($fallback-colors,2));
+             @include font-color(map-get($colors,Very light grayish cyan),nth($fallback-colors,6));
+             
+		   }
+		   
+		   #custom{
+		     width: 100px;
+			 height: 35px;
+			 position:relative;
+			 left:2px;
+			 @include bg-color(map-get($colors,Very light grayish cyan),nth($fallback-colors,6));
+			 @media screen and(min-width:$container__form-xxl * 1px){
+			   width: 95px;
+			   height: 40px;
+			   left:3px;
+			 }
+			 &:hover{
+			   border:5px solid map-get($colors,Strong cyan);
+			   @include font-color(map-get($colors,Very dark cyan),nth($fallback-colors,2));
+			 }
+		   }
+		   .pre-tip{
+		      @include margin(5px);
+		   }
+		   @media screen and(min-width:$container__form-xxl * 1px){
+		     right: 15px;
+		   }
+		 }
+		 @media screen and(min-width:$container__form-xxl * 1px){
+		    @include padding(20px);
+		 }
+	   }
+	   &__second{
+	     overflow:auto;
+		 height:100%;
+		 @include padding(10px);
+	     @include bg-color(map-get($colors,Very dark cyan),nth($fallback-colors,2));
+	     .title {
+		    @include font-color(map-get($colors,Very light grayish cyan),nth($fallback-colors,6));
+		    font:{
+			  size:$font_size-18;
+			  weight:$font_weight-bold;
+			}
+		 }
+		 .per{
+		    font:{
+			  size:$font_size-15;
+			  weight:$font_weight-normal;
+			}
+		    @include font-color(map-get($colors,Grayish cyan),nth($fallback-colors,4));
+		 }
+		 .result{
+		    @include font-color(map-get($colors,Strong cyan),nth($fallback-colors,1));
+			font:{
+			  size:$font_size-24;
+			  weight:$font_weight-bold;
+			}
+		 }
+		 .btn-primary{
+		    width: 300px;
+			display:block;
+			margin: 20px auto;
+			border:none;
+			@include bg-color(map-get($colors,Strong cyan),nth($fallback-colors,1));
+			&:hover{
+			   @include bg-color(map-get($colors,Light grayish cyan),nth($fallback-colors,5));
+			   @include font-color(map-get($colors,Very dark cyan),nth($fallback-colors,2));
+			}
+		 }
+		 @media screen and(min-width:$container__form-xxl * 1px){
+		    @include padding(20px);
+		 }
+	   }
+	   @media screen and(min-width:$container__form-xxl * 1px){
+	       height: 450px;
+	   }
+	}
+    @media screen and (min-width: $container__form-xxl * 1px) {
+       @include width(900);
+	   height: 550px;
+	   @include padding(50px);
+    }
+  
+}
+
+footer {
+  .attribution {
+    font-size: $font_size-8;
+    text-align: center;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/yxgKFKLM/favicon-32x32.png">
+  <link rel='stylesheet' href='tip-calculator-app-main.css' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  
+</head>
+<body>
+      <main class='container' id='main'>
+	        <form id='form' class='row d-flex flex-xxl-row flex-column outer' action='#' method='post'>
+			   <div class='col outer__first d-flex flex-column justify-content-between'>
+			      <div class="input-group d-flex flex-column">
+				     <div class='d-flex justify-content-between'>
+				       <label class='label-title' for='amount'>Bill</label>
+					   <span class='error' id='amount-error'>Can't be zero dollars or less,at most one decimal point(0.##,##.##)</span>
+					 </div>
+					 <div class='d-flex'>
+					    <span class='input-group-text border-right'>
+					       <i class="fa-solid fa-dollar-sign"></i>
+						</span>
+                        <input id='amount' value='0' type="number" class="form-control border-left" placeholder="0.00">
+					 </div>
+				  </div>
+			      <fieldset class='container' id='tipamount'>
+			            <legend class='label-title'>Select Tip %</legend>
+						<div class='row'>
+                           <label for='five' aria-label='5% tip' class="form-check-label col-xxl-4 col-6">
+                              <input class='tip' id="five" name="tip" value="5" type="radio"> 
+						      <span class='pre-tip text-center'>5&#37;</span>
+                           </label>
+                           <label for='ten' aria-label='10% tip' class="form-check-label col-xxl-4 col-6">
+                              <input class='tip' id="ten" name="tip" value="10" type="radio"> 
+						      <span class='pre-tip text-center'>10&#37;</span>
+                           </label>
+                           <label for='fifteen' aria-label='15% tip' class="form-check-label col-xxl-4 col-6">
+                              <input class='tip' id="fifteen" name="tip" value="15" type="radio"> 
+						      <span class='pre-tip text-center'>15&#37;</span>
+                           </label>
+                           <label for='twentyfive' aria-label='25% tip' class="form-check-label col-xxl-4 col-6">
+                              <input class='tip' id="twentyfive" name="tip" value="25" type="radio"> 
+						      <span class='pre-tip text-center'>25&#37;</span>
+                           </label>
+                           <label for='fifty' aria-label='50% tip' class="form-check-label col-xxl-4 col-6">
+                              <input class='tip' id="fifty" name="tip" value="50" type="radio"> 
+						      <span class='pre-tip text-center'>50&#37;</span>
+                           </label>
+						   <label for='custom' aria-label='Custom tip' class="form-label center-text mt-1 col-xxl-4 col-6">
+                              <input class='form-control text-center' placeholder='Custom' id="custom" type="text"> 
+						      <span class='error' id='custom-error'>Can't be negative dollars,and at most one decimal point(0.##,##.##)</span>
+					       </label>
+						</div>
+                  </fieldset>
+				  <div class="input-group d-flex flex-column">
+				     <div class='d-flex justify-content-between'>
+				        <label class='me-3 label-title' for='people'>Number of people</label>
+						<span class='error' id='people-error'>Can't be zero people,and not start with zero.</span>
+					 </div>
+                     <div class='d-flex'>
+					    <span class="input-group-text border-right">
+                          <i class="fa-solid fa-user"></i>
+                        </span>
+                        <input id='people' type="number" value='0' class="form-control border-left" placeholder="0">
+                     </div>
+				  </div>
+			 </div>
+			 <div class='col outer__second d-flex flex-column justify-content-between'>
+                 <div class='d-flex justify-content-between'>
+				    <div class='d-flex flex-column'>
+                      <p class='title'>Tip Amount</p>
+				      <span class='per'>/ person</span>
+				    </div>
+				   <span class='result' id='tipPerPerson'></span>
+                 </div>
+				 <div class='d-flex justify-content-between mt-4 '>
+				    <div class='d-flex flex-column'>
+                     <p class='title'>Total</p>
+                     <span class='per'>/ person</span>
+                    </div>
+				    <span class='result' id='totalPerPerson'></span>
+				 </div>
+                 <button id='reset' class='btn btn-primary text-uppercase'>Reset</button>
+			 </div>
+	     </form>
+      </main>
+      <footer>
+	     <div class="attribution mt-5">
+            <span class='me-2'>Challenge by</span><a class='me-2' href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a> 
+            <span class='me-2'>Coded by</span><a href="https://www.frontendmentor.io/profile/cmb347827">CMB</a>
+         </div>
+	  </footer>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	  <script src='tip-calculator-app-main.js'></script>
+</body>
+</html>
