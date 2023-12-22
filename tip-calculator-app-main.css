@@ -13041,15 +13041,15 @@ body {
       #main .outer__second .result {
         color: Aquamarine4;
         color: #26c0ab;
-        font-size: 24px;
+        font-size: 72px;
         font-weight: 700; }
       #main .outer__second .btn-primary {
         width: 300px;
         display: block;
         margin: 20px auto;
         border: none;
-        background-color: Aquamarine4;
-        background-color: #26c0ab; }
+        background-color: DarkSlateGray4;
+        background-color: #5e7a7d; }
         #main .outer__second .btn-primary:hover {
           background-color: LightCyan3;
           background-color: #c5e4e7;
