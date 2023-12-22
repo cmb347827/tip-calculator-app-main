@@ -240,7 +240,7 @@ body {
 	}
     @media screen and (min-width: $container__form-xxl * 1px) {
        @include width(900);
-	   height: 700px;
+	   height: 600px;
 	   @include margin(150px auto);
 	   @include padding(50px);
     }
