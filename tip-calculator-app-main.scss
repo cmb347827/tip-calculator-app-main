@@ -76,7 +76,9 @@ body {
 	   size:$font_size-24;
 	   weight:$font_weight-semibold;
 	}
-	
+	h1{
+	   height:0px;
+	}
 	.outer{
 	   height: 100%;
 	   & > *{

@@ -12927,6 +12927,8 @@ body {
   margin: 100px auto;
   font-size: 24px;
   font-weight: 600; }
+  #main h1, #main .h1 {
+    height: 0px; }
   #main .outer {
     height: 100%; }
     #main .outer > * {
