@@ -12914,7 +12914,7 @@ body {
   @media screen and (min-width: 1440px) {
     html,
     body {
-      background: url("./images/logo.svg") top center/12% 12% no-repeat #c5e4e7; } }
+      background: url("./images/logo.svg") top center/10% 10% no-repeat #c5e4e7; } }
 
 .red {
   border: 2px solid red; }
@@ -13065,6 +13065,7 @@ body {
     #main {
       width: 900px;
       height: 550px;
+      margin: 200px auto;
       padding: 50px; } }
 
 footer .attribution {

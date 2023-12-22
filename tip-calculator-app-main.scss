@@ -62,7 +62,7 @@ body {
   
   background: url('./images/logo.svg') top center / 9% 9% no-repeat map-get($colors,Light grayish cyan);
   @media screen and(min-width:$container__form-xxl * 1px){
-     background: url('./images/logo.svg') top center / 12% 12% no-repeat map-get($colors,Light grayish cyan);
+     background: url('./images/logo.svg') top center / 10% 10% no-repeat map-get($colors,Light grayish cyan);
   }
 }
 
@@ -238,6 +238,7 @@ body {
     @media screen and (min-width: $container__form-xxl * 1px) {
        @include width(900);
 	   height: 550px;
+	   @include margin(200px auto);
 	   @include padding(50px);
     }
   
