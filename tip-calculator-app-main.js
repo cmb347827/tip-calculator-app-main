@@ -189,6 +189,6 @@ $(window).on('load',function(){
             },false);
 	 },false);
 	 (vars.resetbtn).addEventListener('click',function(){
-		 vars.tipform.reset();
+		 //vars.tipform.reset();
      });
 });
