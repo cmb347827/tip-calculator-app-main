@@ -12920,6 +12920,7 @@ body {
   border: 2px solid red; }
 
 #main {
+  border-radius: 15px;
   width: 375px;
   background-color: White;
   background-color: white;
@@ -13066,7 +13067,7 @@ body {
   @media screen and (min-width: 1440px) {
     #main {
       width: 900px;
-      height: 600px;
+      height: 550px;
       margin: 150px auto;
       padding: 50px; } }
 
