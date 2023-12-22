@@ -237,7 +237,7 @@ body {
 	}
     @media screen and (min-width: $container__form-xxl * 1px) {
        @include width(900);
-	   height: 550px;
+	   height: 600px;
 	   @include margin(200px auto);
 	   @include padding(50px);
     }
